@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Eventbride</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>Eventbride</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+      <a class="navbar-brand" href="#">Eventbride</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <strong><a class="nav-item nav-link" href="/events">Home</a></strong>
+
+
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <% if user_signed_in? %>
+
+          <a class="nav-link" href="/users/<%=current_user.id %>">Profile</a>
+          <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a>
+
+
+
+          <% else %>
+
+          <a class="nav-link" href="<%= new_user_session_path %>">Sign In</a>
+          <a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
+
+          <%end%>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container pt-3 pb-5" style="background-color: #eee;">
     <%= yield %>
-  </body>
+  </div>
+</body>
+
 </html>

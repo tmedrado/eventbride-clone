@@ -1,0 +1,9 @@
+<h1>Profile Page</h1>
+<p>This is your profile page! Check your information here</p>
+
+<p>First Name: <%=@user.first_name %> </p>
+<p>Last Name: <%=@user.last_name %> </p>
+<p>User ID: <%=@user.id %> </p>
+<p>This user has <%= @user.events.count%> events </p>
+
+<a href="/users/edit" class="btn btn-primary">Edit my info</a>
