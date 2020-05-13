@@ -1,0 +1,13 @@
+<%= form_for @event do |f| %>
+<div class="form-group">
+  <label>Event's title</label>
+  <%= f.text_field :title, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <label>Gossip's Description</label>
+  <%= f.text_area :description, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <button type="submit" class="btn btn-primary">Modify your Event</button>
+</div>
+<% end %>

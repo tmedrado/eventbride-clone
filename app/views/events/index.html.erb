@@ -19,15 +19,20 @@
   <% Event.all.each do |event| %>
   <div class="card mb-3 mx-auto">
     <div class="card-body">
-      <h5 class="card-title"><%= event.title %></h5>
-      <p class="card-text">Description: <%= event.description %></p>
-      <p class="card-text"><%= event.price %>$</p>
+      <center>
+        <h5 class="card-title my-3"><%= event.title %></h5>
+      </center>
+      <p class="card-text"><strong>Description: </strong><%= event.description %></p>
+      <p class="card-text"><strong>Price: </strong><%= event.price %>$</p>
       <p class="card-text">Starting <%= time_ago_in_words(event.start_date ) %></p>
-      <p class="card-text">Host: <%= User.find_by(id:event.owner_id).first_name %></p>
+      <p class="card-text"><strong>Host:</strong> <%= User.find_by(id:event.owner_id).first_name %></p>
 
 
       <a href="<%= event_path(event.id)  %>" class="btn btn-primary">Event Page</a>
-      <a href="<%=  %>" class="btn btn-default">Update</a>
+
+      <% if current_user.id == event.owner_id %>
+      <a href="<%= edit_event_path(event.id)  %>" class="btn btn-default">Update</a>
+      <% end %>
     </div>
   </div>
   <% end %>
