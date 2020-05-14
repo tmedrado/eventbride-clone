@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'static_pages/secret'
   devise_for :users
 
-  resources :users, only: [:show, :new, :create]
+  resources :users, only: [:show, :new, :create, :edit, :update]
   resources :participations, only: [:show, :new, :create]
   resources :charges
 

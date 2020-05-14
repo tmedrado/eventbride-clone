@@ -14,25 +14,29 @@
     </p>
   </div>
 
-  <a href="<%= new_event_path %>" class="btn btn-success mb-3">Create New Event!</a>
+  <div>
+    <a href="<%= new_event_path %>" class="btn btn-success mb-3">Create New Event!</a>
+  </div>
 
   <% Event.all.each do |event| %>
-  <div class="card mb-3 mx-auto">
-    <div class="card-body">
-      <center>
-        <h5 class="card-title my-3"><%= event.title %></h5>
-      </center>
-      <p class="card-text"><strong>Description: </strong><%= event.description %></p>
-      <p class="card-text"><strong>Price: </strong><%= event.price %>$</p>
-      <p class="card-text">Starting <%= time_ago_in_words(event.start_date ) %></p>
-      <p class="card-text"><strong>Host:</strong> <%= User.find_by(id:event.owner_id).first_name %></p>
+  <div class="card m-1 " style="display:inline-block;">
+    <div class="card group" style="width:22rem;">
+      <div class=" card-body">
+        <center>
+          <h5 class="card-title my-3"><%= event.title %></h5>
+        </center>
+        <p class="card-text"><strong>Description: </strong><%= event.description %></p>
+        <p class="card-text"><strong>Price: </strong><%= event.price %>$</p>
+        <p class="card-text">Starting <%= time_ago_in_words(event.start_date ) %></p>
+        <p class="card-text"><strong>Host:</strong> <%= User.find_by(id:event.owner_id).first_name %></p>
 
 
-      <a href="<%= event_path(event.id)  %>" class="btn btn-primary">Event Page</a>
+        <a href="<%= event_path(event.id)  %>" class="btn btn-primary">Event Page</a>
 
-      <% if current_user.id == event.owner_id %>
-      <a href="<%= edit_event_path(event.id)  %>" class="btn btn-default">Update</a>
-      <% end %>
+        <% if current_user.id == event.owner_id %>
+        <a href="<%= edit_event_path(event.id)  %>" class="btn btn-default">Update</a>
+        <% end %>
+      </div>
     </div>
   </div>
   <% end %>
