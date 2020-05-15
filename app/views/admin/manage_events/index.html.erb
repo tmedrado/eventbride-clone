@@ -1,0 +1,30 @@
+<center>
+  <h1>Manage Events</h1>
+</center>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Title</td>
+      <td>Owner</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% Event.all.each do |event| %>
+    <tr>
+      <td><%= event.id%></td>
+      <td><%= event.title%></td>
+      <td><%= %></td>
+
+
+      <td>
+        <a href="<%= %>" class="btn btn-primary">Edit </a>
+        <a href="<%= event_path(event.id) %>" class="btn btn-danger" data-confirm="Are you sure?" data-method="delete">Delete</a>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>

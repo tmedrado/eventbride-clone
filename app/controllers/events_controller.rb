@@ -37,6 +37,13 @@ class EventsController < ApplicationController
   
     def destroy
       @event = Event.find(params[:id])
+      @event.participations.count.times do 
+        @event.participations.first.delete
+      end
+      @event.destroy 
+
+      redirect_to events_path
+
     end
 
 
