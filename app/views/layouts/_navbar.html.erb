@@ -30,11 +30,11 @@
           </li>
           <% end %>
 
-
+          <% if user_signed_in? %>
           <li>
             <a class="nav-link btn btn-danger" href="<%= destroy_user_session_path %>" data-method="delete"><strong>Logout</strong></a>
           </li>
-
+          <%end %>
         </ul>
       </div>
     </nav>

@@ -1,13 +1,16 @@
-  <div class="card" style="border-radius: 11px;">
-    <div class="card-body">
-      <h5 class="card-title"><%=@event.title%></h5>
-      <p class="card-text"><%=@event.description%></p>
-    </div>
-    <div class="card-header">
-      <%=@event.location%>
-    </div>
-  </div>
+ <div class="card" style="border-radius: 11px;">
+   <div class="card-body">
+     <%= image_tag @event.pic, style:"width:100%;", alt: 'pic' %>
+     <h5 class="card-title"><%=@event.title%></h5>
+     <p class="card-text"><%=@event.description%></p>
+   </div>
+   <div class="card-header">
+     <%=@event.location%>
+   </div>
+ </div>
 
-  <%=render "charges/new"%>
+ <% if current_user.id != @event.owner_id%>
+ <%=render "charges/new"%>
+ <%end %>
 
-  <a style="margin: 20px;" href="/events" class="btn btn-primary">Home Page</a>
+ <a style="margin: 20px;" href="/events" class="btn btn-primary">Back</a>

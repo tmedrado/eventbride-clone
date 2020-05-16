@@ -22,6 +22,11 @@
   <div class="card m-1 " style="display:inline-block;">
     <div class="card group" style="width:22rem;">
       <div class=" card-body">
+        <%if event.pic.attached?%>
+        <%= image_tag event.pic, style:"width:100%;", alt: 'pic' %>
+        <%else%>
+        <small>This event has no pic attached </small>
+        <%end %>
         <center>
           <h5 class="card-title my-3"><%= event.title %></h5>
         </center>
@@ -32,10 +37,12 @@
 
 
         <a href="<%= event_path(event.id)  %>" class="btn btn-primary">Event Page</a>
-
+        <% if user_signed_in? %>
         <% if current_user.id == event.owner_id %>
         <a href="<%= edit_event_path(event.id)  %>" class="btn btn-default">Update</a>
         <% end %>
+        <% end %>
+
       </div>
     </div>
   </div>

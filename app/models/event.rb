@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :participations
   has_many :users, :through => :participations
+  has_one_attached :pic
 
   validates :start_date, presence: true
   validates :duration, presence: true
